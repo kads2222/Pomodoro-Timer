@@ -1,7 +1,7 @@
 let timeDisplay = document.getElementById("time");
-let startbtn = document.getElementById("start");
-let pausebtn = document.getElementById("pause");
-let resetbtn = document.getElementById("reset");
+let startBtn = document.getElementById("start-pause");
+let startIcon = document.getElementById("start-pause-icon");
+let resetBtn = document.getElementById("reset");
 
 let totalTime = 25 * 60;
 let timer = null;
@@ -16,43 +16,40 @@ function updateDisplay() {
 }
 
 function startTimer() {
-  if (isRunning) return;
-  isRunning = true;
-  startbtn.disabled = true;
-  pausebtn.disabled = false;
-
-  timer = setInterval(() => {
-    if (totalTime > 0) {
-      totalTime--;
-      updateDisplay();
-    } else {
-      clearInterval(timer);
-      isRunning = false;
-      startbtn.disabled = false;
-      pausebtn.disabled = true;
-      alert("time is up take a break ");
-    }
-  }, 1000);
-}
-
-function pauseTimer() {
-  clearInterval(timer);
-  isRunning = false;
-  startbtn.disabled = false;
-  pausebtn.disabled = true;
+  if (!isRunning) {
+    isRunning = true;
+    startIcon.classList.remove("fa-play");
+    startIcon.classList.add("fa-pause");
+    timer = setInterval(() => {
+      if (totalTime > 0) {
+        totalTime--;
+        updateDisplay();
+      } else {
+        clearInterval(timer);
+        isRunning = false;
+        startIcon.classList.remove("fa-pause");
+        startIcon.classList.add("fa-play");
+        alert("time is up");
+      }
+    }, 1000);
+  } else {
+    clearInterval(timer);
+    isRunning = false;
+    startIcon.classList.remove("fa-pause");
+    startIcon.classList.add("fa-play");
+  }
 }
 
 function resetTimer() {
   clearInterval(timer);
   isRunning = false;
   totalTime = 25 * 60;
+  startIcon.classList.remove("fa-pause");
+  startIcon.classList.add("fa-play");
   updateDisplay();
-  startbtn.disabled = false;
-  pausebtn.disabled = true;
 }
 
-startbtn.addEventListener("click", startTimer);
-pausebtn.addEventListener("click", pauseTimer);
-resetbtn.addEventListener("click", resetTimer);
+startBtn.addEventListener("click", startTimer);
+resetBtn.addEventListener("click", resetTimer);
 
 updateDisplay();
