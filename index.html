@@ -26,6 +26,32 @@
           <i class="fa-solid fa-arrow-rotate-right"></i>
         </button>
       </div>
+      <div class="buttons">
+        <button id="mini">
+          Mini Session
+        </button>
+        <button id="long">
+          long Session
+        </button>
+        <button id="custom">
+          Custom Session
+        </button>
+        </button>
+        <button id="break">
+         Break
+        </button>
+      </div>
+
+      <div id="modal" class="modal">
+      <div class="modal-content">
+        <h3>Enter session duration</h3>
+        <p class="alert">enter between 1 minute to 60 minutes</p>
+      <input id="timeInput" type="number" placeholder="Enter minutes" min="0" max="60">
+      <p id="errorMsg" class="error"></p>
+      <button id="setCustom" class="timeSetBtn">Set</button>
+      <button id="cancel" class="closeModalBtn">Cancel</button>
+      </div>
+
     </main>
     <script src="./index.js"></script>
   </body>
