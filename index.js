@@ -1,3 +1,4 @@
+const toggle = document.getElementById("toggle");
 let timeDisplay = document.getElementById("time");
 let startBtn = document.getElementById("start-pause");
 let startIcon = document.getElementById("start-pause-icon");
@@ -73,6 +74,10 @@ function customTime(duration) {
     error.textContent = "Please enter the session between 1 and 60 minutes";
   }
 }
+
+toggle.addEventListener("change", () => {
+  document.body.classList.toggle("dark");
+});
 
 startBtn.addEventListener("click", startTimer);
 resetBtn.addEventListener("click", resetTimer);
