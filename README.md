@@ -21,7 +21,7 @@ A mini web app to track time using pomodoro technique
 
 - The UI is responsive
 
-# responsive UI designs
+# Responsive UI design screenshots
 
 ### Desktop view
 
